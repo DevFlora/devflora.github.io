@@ -1,0 +1,219 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+
+.floating-shape { display: none !important; }
+
+.bg-blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 0;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blob1 {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    top: 10%;
+    left: -10%;
+}
+
+.blob2 {
+    width: 700px;
+    height: 700px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    bottom: -20%;
+    right: -15%;
+}
+
+/* 기존 body 배경을 아주 살짝 더 부드럽게 */
+body {
+    background: linear-gradient(135deg, #fafbff 0%, #f0f2ff 100%);
+}
+
+/* 모바일에서도 보기 좋게 */
+@media (max-width: 768px) {
+    .blob1, .blob2 { 
+        width: 400px; 
+        height: 400px; 
+        filter: blur(80px);
+    }
+}
+
+/* 섹션 공통 */
+.section { 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    scroll-snap-align: start; 
+    position: relative; 
+    z-index: 10; 
+}
+
+/* 타이포그래피 */
+h1 { 
+    font-size: 5rem; 
+    font-weight: 800; 
+    color: #111; 
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+}
+.subtitle { 
+    font-size: 1.8rem; 
+    color: #666; 
+    font-weight: 500;
+}
+.section h2 { 
+    font-size: 3.5rem; 
+    font-weight: 800; 
+    color: #222; 
+    margin-bottom: 60px; 
+    letter-spacing: -0.03em;
+}
+
+/* 스크롤 다운 */
+.scroll-down { 
+    position: absolute; 
+    bottom: 50px; 
+    font-size: 2rem; 
+    color: #ccc; 
+    cursor: pointer; 
+    animation: float 2s ease-in-out infinite; 
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 50px; height: 50px;
+    display: flex; justify-content: center; align-items: center;
+}
+.scroll-down:hover { color: #667eea; border-color: #667eea; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+/* Skills */
+.skills-container { 
+    display: flex; 
+    gap: 40px; 
+    justify-content: center; 
+    width: 100%;
+    max-width: 1000px;
+}
+.skill-category { 
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+    flex: 1;
+    text-align: center;
+}
+.skill-category h3 { 
+    font-size: 1.5rem; 
+    margin-bottom: 30px; 
+    color: #4a5568; 
+    font-weight: 700;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+.skill-items { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 14px; 
+}
+.skill-tag { 
+    background: #fff;
+    color: #4a5568; 
+    padding: 10px 20px; 
+    border-radius: 14px; 
+    font-weight: 600; 
+    font-size: 1rem; 
+    border: 1px solid #e2e8f0;
+    transition: 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.skill-tag .skill-icon { width: 22px; height: 22px; }
+.skill-tag:hover {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(102,126,234,0.2);
+}
+
+/* Projects */
+.projects-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2,1fr); 
+    gap: 40px; 
+    max-width: 1000px; 
+    width: 100%;
+}
+.project-card { 
+    background: white; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.04); 
+    transition: 0.3s;
+}
+.project-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 30px 60px rgba(102,126,234,0.2); 
+}
+.project-info { padding: 25px; text-align: left; }
+
+.project-info h3 { 
+    font-size: 1.4rem; 
+    color: #2d3748; 
+    margin-bottom: 8px; 
+    font-weight: 700;
+}
+
+.project-info p { 
+    color: #718096; 
+    font-size: 0.95rem; 
+    line-height: 1.6; 
+}
+
+.project-card img { width:100%; height:220px; object-fit:cover; }
+
+/* 명함 */
+.business-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(118,75,162,0.3);
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.business-card h2 { font-size: 3.5rem !important; margin: 0 0 10px 0 !important; }
+.title { font-size: 1.2rem; opacity: 0.85; margin-bottom: 40px; }
+.contact-info a { color:white; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.4); transition:0.2s; }
+.contact-info a:hover { border-bottom-color:white; }
+.card-decoration {
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 150px; height: 150px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    h1 { font-size: 3.5rem; }
+    .subtitle { font-size: 1.4rem; }
+    .section h2 { font-size: 2.5rem; }
+    .skills-container { flex-direction: column; gap: 25px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .business-card { padding: 40px 20px; }
+    .floating-shape { width: 160px; height: 160px; }
+}

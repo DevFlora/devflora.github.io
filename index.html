@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lee Yong Ho | Portfolio</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+</head>
+<body>
+    <!-- 새로 추가된 예쁜 배경 블롭 배경 -->
+    <div class="bg-blob blob1"></div>
+    <div class="bg-blob blob2"></div>
+
+    <div class="sections">
+        <!-- 인트로 -->
+        <section class="section">
+            <h1 id="typed"></h1>
+            <p class="subtitle">Computer Science 1st Year</p>
+            <div class="scroll-down">↓</div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section skills-section">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">
+                            <img class="skill-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                            Python
+                        </span>
+                        <span class="skill-tag">
+                            <img class="skill-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+                            C
+                        </span>
+                        <span class="skill-tag">
+                            <img class="skill-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg" alt="Lua">
+                            Lua
+                        </span>
+                        <span class="skill-tag">
+                            <img class="skill-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML/CSS/JS">
+                            HTML/CSS/JS
+                        </span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Structure & Algorithm</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Queue</span>
+                        <span class="skill-tag">Stack</span>
+                        <span class="skill-tag">BFS/DFS</span>
+                        <span class="skill-tag">LCM</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/4a90e2/ffffff?text=hCAPTCHA+AI+Solver" alt="hCAPTCHA AI Solver">
+                    <div class="project-info">
+                        <h3>hCAPTCHA AI Solver</h3>
+                        <p>Teachable Machine + Playwright<br>이미지 인식 기반 자동 해결 데모 (비공개)</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/95a5a6/ffffff?text=Coming+Soon" alt="Coming Soon">
+                    <div class="project-info">
+                        <h3>신호등 감지기</h3>
+                        <p>미래에 만들 예정인 프로젝트</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 명함 -->
+        <section class="section contact-card">
+            <div class="business-card">
+                <h2>Lee Yong Ho</h2>
+                <p class="title">Computer Science Student</p>
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:aclimvn@gmail.com">aclimvn@gmail.com</a></p>
+                    <p>GitHub: <a href="https://github.com/DevFlora" target="_blank">@DevFlora</a></p>
+                    <p>Baekjoon: <a href="https://www.acmicpc.net/user/flora7" target="_blank">flora7</a></p>
+                </div>
+                <div class="card-decoration"></div>
+            </div>
+        </section>
+    </div>
+    <script>
+    
+ 
+        new Typed('#typed', {
+            strings: ["Lee Yong Ho"],
+            typeSpeed: 130,
+            showCursor: true,
+            cursorChar: '_'
+        });
+
+        // 마우스 따라 블롭 살짝 움직이게
+        const blob1 = document.querySelector('.blob1');
+        const blob2 = document.querySelector('.blob2');
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            blob1.style.transform = `translate(${x * 30}px, ${y * 30}px)`;
+            blob2.style.transform = `translate(${x * -40}px, ${y * -40}px)`;
+        });
+
+        // 풀페이지 스크롤 (완벽 수정 버전)
+        const sections = document.querySelectorAll('.section');
+        let current = 0;
+        function scrollToSection(n) {
+            sections[n].scrollIntoView({ behavior: 'smooth' });
+            current = n;
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                if (current < sections.length - 1) scrollToSection(current + 1);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (current > 0) scrollToSection(current - 1);
+            }
+        });
+        document.querySelector('.scroll-down')?.addEventListener('click', () => scrollToSection(1));
+        window.addEventListener('load', () => scrollToSection(0));
+    
+
+    </script>
+
+    </body>
+</html>
