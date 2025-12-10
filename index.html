@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 </head>
 <body>
-    <!-- 새로 추가된 예쁜 배경 블롭 배경 -->
+    <!--배경 블롭 배경 -->
     <div class="bg-blob blob1"></div>
     <div class="bg-blob blob2"></div>
 
@@ -64,7 +64,7 @@
             <h2>Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="https://placehold.co/600x400/4a90e2/ffffff?text=hCAPTCHA+AI+Solver" alt="hCAPTCHA AI Solver">
+                    <img src="/src/aiCaptcha.png" alt="hCAPTCHA AI Solver">
                     <div class="project-info">
                         <h3>hCAPTCHA AI Solver</h3>
                         <p>Teachable Machine + Playwright<br>이미지 인식 기반 자동 해결 데모 (비공개)</p>
@@ -119,7 +119,7 @@
             blob2.style.transform = `translate(${x * -40}px, ${y * -40}px)`;
         });
 
-        // 풀페이지 스크롤 (완벽 수정 버전)
+        // 풀페이지 스크롤
         const sections = document.querySelectorAll('.section');
         let current = 0;
         function scrollToSection(n) {
