@@ -78,16 +78,26 @@ h1 {
 
 /* 스크롤 다운 */
 .scroll-down { 
-    position: absolute; 
-    bottom: 50px; 
+    position: fixed;   
+    bottom: 30px; 
+    left: 50%;
+    /* transform으로 중앙 정렬하면 애니메이션과 충돌하므로 margin으로 중앙 잡기 */
+    margin-left: -25px; 
+    
     font-size: 2rem; 
     color: #ccc; 
     cursor: pointer; 
     animation: float 2s ease-in-out infinite; 
     border: 1px solid #ddd;
     border-radius: 50%;
-    width: 50px; height: 50px;
-    display: flex; justify-content: center; align-items: center;
+    width: 50px; 
+    height: 50px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    z-index: 100; /* 다른 요소보다 위에 오도록 */
+    background: rgba(255, 255, 255, 0.3); /* 내용 위로 겹칠 때 잘 보이게 반투명 배경 */
+    backdrop-filter: blur(4px);
 }
 .scroll-down:hover { color: #667eea; border-color: #667eea; }
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
@@ -267,76 +277,73 @@ h1 {
 }
 
 
-/* 모바일 최적화 */
+/* 모바일 최적화  */
 @media (max-width: 768px) {
-    /* 전체 폰트 살짝 작게  */
+
+    .section { 
+        height: auto !important; 
+        min-height: 100vh; 
+        padding: 100px 20px 80px 20px; /* 화살표 가리지 않게 하단 패딩 추가 */
+        justify-content: flex-start; /* 기본은 위쪽 정렬 */
+    }
+
+
+    .section:first-child {
+        justify-content: center !important; 
+        height: 100vh !important; /* 화면 꽉 차게 */
+        padding-top: 0;
+    }
+
+    /* 폰트 사이즈 조절 */
     h1 { font-size: 3.2rem !important; }
     .subtitle { font-size: 1.35rem; }
 
     .section h2 { 
         font-size: 2.4rem !important; 
+        margin-top: 40px; 
         margin-bottom: 40px;
     }
 
-    /* Skills – 세로로 쌓이게 */
+    /* Skills */
     .skills-container {
         flex-direction: column;
         gap: 28px;
-        padding: 0 20px;
+        padding: 0;
+        width: 100%;
     }
     .skill-category {
-        padding: 32px 28px;
+        padding: 32px 20px;
+        width: 100%;
     }
 
-    /* Projects – 한 줄에 하나씩, 카드 더 크게 */
+    /* Projects */
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 32px;
-        padding: 0 20px;
+        padding: 0;
+        width: 100%;
     }
-    .project-card img {
-        height: 200px;
-    }
+    .project-card { width: 100%; }
+    .project-card img { height: 200px; }
 
-    /* 새 명함 – 모바일에서 명함 */
+    /* 명함 */
     .business-card-modern {
         flex-direction: column;
         text-align: center;
-        padding: 48px 32px;
-        gap: 32px;
-        width: 92%;
-        max-width: 400px;
+        padding: 40px 20px;
+        gap: 30px;
+        width: 100%;
     }
     .profile-photo img {
         width: 120px;
         height: 120px;
-        border-radius: 20px;
     }
-    .card-content h2 {
-        font-size: 2.3rem !important;
-    }
-    .card-content .title {
-        font-size: 1.2rem;
-    }
-    .contact-info p {
-        font-size: 1.1rem;
-        justify-content: center;
-    }
-
-    /* 블롭 배경 모바일 */
+    
+    /* 배경 블롭 */
     .blob1, .blob2 {
-        width: 380px !important;
-        height: 380px !important;
-        filter: blur(90px);
-        opacity: 0.4;
+        width: 300px !important;
+        height: 300px !important;
+        opacity: 0.3;
     }
 
-    /* 스크롤 다운 버튼 조금만 작게 */
-    .scroll-down {
-        width: 44px;
-        height: 44px;
-        font-size: 1.8rem;
-        bottom: 40px;
-    }
 }
-
